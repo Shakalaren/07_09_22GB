@@ -18,6 +18,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from users.views import UserModelViewSet
 from TODOMASTER.views import ProjectModelViewSet, ToDoModelViewSet
+from users import views
+
 
 router = DefaultRouter()
 router.register('users', UserModelViewSet)
@@ -27,5 +29,9 @@ router.register('todo', ToDoModelViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth', include('rest_framework.urls')),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('views/api-view/', views.UserAPIView.as_view()),
+    path('views/apiup-view/', views.UserUpdateAPIView.as_view()),
+    path('filters/kwargs/<str:name>/', views.ProjectKwargsFilterView.as_view()),
+    path('filters/kwargs/<str:name>/', views.ToDoKwargsFilterView.as_view()),
 ]
