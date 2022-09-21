@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'rest_framework',
     #'django_filter',
     'users',
-    'corsheaders'
+    'corsheaders',
+    'TODOMASTER'
 ]
 
 MIDDLEWARE = [
